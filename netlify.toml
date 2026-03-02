@@ -1,8 +1,7 @@
 [build]
-  command = "npm install && npx vite build"
+  command = "npm ci && chmod +x node_modules/.bin/vite && npm run build"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "18"
-  NODE_ENV = "development"
-  
+  NODE_ENV     = "development"

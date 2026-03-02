@@ -7,8 +7,7 @@ const CATEGORY_LABEL: Record<string, string> = {
   'smoothie':    'Smoothies',
   'detox-water': 'Detox Waters',
 };
-
-export function RecipeDetailPage() {
+  export function RecipeDetail() {
   const { id } = useParams<{ id: string }>();
   if (!id) return <Navigate to="/" replace />;
 

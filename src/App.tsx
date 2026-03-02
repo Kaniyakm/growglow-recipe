@@ -1,12 +1,13 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect }              from 'react';
 import { Recipe, FilterKey, RecipeCategory } from './types/recipe';
-import { recipes } from './data/recipes';
-import { useRecipes } from './hooks/useRecipes';
-import { RecipeSection } from './components/RecipeSection';
-import { FilterPills } from './components/FilterPills';
-import { RecipeModal } from './components/RecipeModal';
-import { SearchBar } from './components/SearchBar';
-import './styles/index.css';
+import { recipes }                           from './data/recipes';
+import { useRecipes }                        from './hooks/useRecipes';
+import { RecipeSection }                     from './components/RecipeSection';
+import { FilterPills }                       from './components/FilterPills';
+import { RecipeModal }                       from './components/RecipeModal';
+import { SearchBar }                         from './components/SearchBar';
+
+
 
 
 const CATEGORIES: RecipeCategory[] = ['hair-mask', 'smoothie', 'detox-water'];

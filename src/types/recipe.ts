@@ -1,21 +1,11 @@
 export type RecipeCategory = 'hair-mask' | 'smoothie' | 'detox-water';
 export type FilterKey = RecipeCategory | 'all';
-
-
 export type DifficultyLevel = 'easy' | 'medium' | 'advanced';
 
 export type BenefitTag = 
-  | 'hair-growth' 
-  | 'moisturizing' 
-  | 'anti-frizz' 
-  | 'scalp-health'
-  | 'shine'
-  | 'glowing-skin'
-  | 'anti-aging'
-  | 'hydration'
-  | 'detox'
-  | 'volume'
-  | 'energy';
+  | 'hair-growth' | 'moisturizing' | 'anti-frizz' | 'scalp-health'
+  | 'shine'| 'glowing-skin'| 'anti-aging'| 'hydration'| 'detox'
+  | 'volume'| 'energy';
 
 export interface Ingredient { 
 name: string; 
@@ -48,7 +38,8 @@ icon: string;
 export interface FilterState {
   category: FilterKey;
   benefits: BenefitTag[];
-  difficulty: 'all' | DifficultyLevel;
+  difficulty: DifficultyLevel | 'all' ;
   searchQuery: string;
 }
+
 

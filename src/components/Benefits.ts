@@ -1,5 +1,7 @@
 import { BenefitTag } from "../types/recipe";
 
+export type { BenefitTag };
+
 // Human‑readable labels
 export const BENEFIT_LABEL: Record<BenefitTag, string> = {
   'hair-growth': 'Hair Growth',
@@ -29,3 +31,4 @@ export const BENEFIT_ICON: Record<BenefitTag, string> = {
   'energy': '⚡',
   'volume': '💨'
 };
+

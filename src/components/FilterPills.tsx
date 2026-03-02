@@ -1,9 +1,52 @@
-import { FilterState, BenefitTag, DifficultyLevel, RecipeCategory } from '../types/recipe';
+import { FilterState,FilterKey, DifficultyLevel,BenefitTag, RecipeCategory } from '../types/recipe';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Badge } from './ui/badge';
 import { Search, X } from 'lucide-react';
 import { Button } from './ui/button';
+
+type CountMap = {
+  all:           number;
+  'hair-mask':   number;
+  'smoothie':    number;
+  'detox-water': number;
+};
+
+interface FilterPillsProps {
+  filter:   FilterKey;
+  onFilter: (f: FilterKey) => void;
+  counts:   CountMap;
+}
+
+const PILLS: { key: FilterKey; label: string; icon: string }[] = [
+  { key: 'all',          label: 'All Recipes', icon: '✨' },
+  { key: 'hair-mask',    label: 'Hair Masks',  icon: '💆' },
+  { key: 'smoothie',     label: 'Smoothies',   icon: '🥤' },
+  { key: 'detox-water',  label: 'Detox Waters', icon: '💧' },
+];
+
+export function FilterPills({ filter, onFilter, counts }: FilterPillsProps) {  // ✅ named export
+  return (
+    <div className="filter-pills">
+      {PILLS.map(({ key, label, icon }) => (
+        <button
+          key={key}
+          className={`pill ${filter === key ? 'pill--active' : ''}`}
+          onClick={() => onFilter(key)}
+        >
+          <span>{icon}</span>
+          <span>{label}</span>
+          <span className="pill-count">
+            {key === 'all' ? counts.all : counts[key as RecipeCategory]}
+          </span>
+        </button>
+      ))}
+    </div>
+  );
+}
+
+
+
 
 interface RecipeFilterProps {
   filters: FilterState;

@@ -1,4 +1,6 @@
 export type RecipeCategory = 'hair-mask' | 'smoothie' | 'detox-water';
+export type FilterKey = RecipeCategory | 'all';
+
 
 export type DifficultyLevel = 'easy' | 'medium' | 'advanced';
 
@@ -18,22 +20,25 @@ export type BenefitTag =
 export interface Ingredient { 
 name: string; 
 benefit: string; 
-emoji: string
+emoji: string;
+}
 
-id: number; 
+export interface Recipe {
+id: number;
 title: string; 
-category: RecipeCategory; 
-tag: string; 
-difficulty: 'Easy' | 'Medium' | 'Hard'; 
+description: string; 
+image: string; // base64 data URI 
+category: RecipeCategory;
+tag: string; // single word for filtering
+difficulty: DifficultyLevel; 
 time: string; 
 color: string; // accent hex for fallback 
-image: string; // base64 data URI 
-benefits: string[]; 
-description: string; 
+benefits: BenefitTag[]; 
 ingredients: Ingredient[]; 
 steps: string[]; 
 } 
-export type FilterKey = 'all' | RecipeCategory; 
+
+ 
 export interface FilterOption { 
 key: FilterKey; 
 label: string; 

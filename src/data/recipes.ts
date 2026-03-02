@@ -1,44 +1,472 @@
-// Union Types
-export type RecipeCategory = 'hair-mask' | 'smoothie' | 'detox-water';
+import { Recipe } from '../types/recipe';
+import { IMAGES } from '../data/images/images';
 
-export type DifficultyLevel = 'easy' | 'medium' | 'advanced';
 
-export type BenefitTag =
-  | 'hair-growth'
-  | 'moisturizing'
-  | 'anti-frizz'
-  | 'scalp-health'
-  | 'shine'
-  | 'glowing-skin'
-  | 'anti-aging'
-  | 'hydration'
-  | 'detox'
-  | 'energy';
+export const recipes: Recipe[] = [
+  {
+    id:          1,
+    title:       'Avocado Deep Moisture Hair Mask',
+    description: 'A rich, nourishing mask to restore moisture and shine to dry or damaged hair.',
+    image:       IMAGES.Avocado_Deep_Moisture_Hair_Mask,
+    category:    'hair-mask',
+    tag:         'Popular',
+    difficulty:  'easy',
+    time:        '20 mins',
+    color:       '#4ade80',
+    benefits:    ['moisturizing', 'shine', 'anti-frizz'],
+    ingredients: [
+      { emoji: '🥑', name: 'Avocado',   benefit: 'Rich in fatty acids that deeply moisturise the hair shaft' },
+      { emoji: '🍯', name: 'Honey',     benefit: 'Natural humectant that seals in moisture' },
+      { emoji: '🫒', name: 'Olive Oil', benefit: 'Softens and conditions from root to tip' },
+    ],
+    steps: [
+      'Mash one ripe avocado until completely smooth with no lumps.',
+      'Stir in 2 tbsp honey and 1 tbsp olive oil until combined.',
+      'Apply evenly to damp hair from roots to ends.',
+      'Cover with a shower cap and leave for 20 minutes.',
+      'Rinse thoroughly with warm water then shampoo as normal.',
+    ],
+  },
+  {
+    id:          2,
+    title:       'Egg & Argan Oil Protein Hair Mask',
+    description: 'A protein-rich treatment to strengthen and repair brittle or over-processed hair.',
+    image:       IMAGES.Egg___Argon_oil_mask,
+    category:    'hair-mask',
+    tag:         'Best Seller',
+    difficulty:  'medium',
+    time:        '30 mins',
+    color:       '#f59e0b',
+    benefits:    ['hair-growth', 'shine', 'scalp-health'],
+    ingredients: [
+      { emoji: '🥚', name: 'Egg',         benefit: 'Packed with protein to rebuild hair structure' },
+      { emoji: '✨', name: 'Argan Oil',   benefit: 'Smooths the cuticle and adds brilliant shine' },
+      { emoji: '🍋', name: 'Lemon Juice', benefit: 'Balances scalp pH and reduces excess oil' },
+    ],
+    steps: [
+      'Crack one whole egg into a bowl and beat lightly.',
+      'Add 1 tbsp argan oil and 1 tsp lemon juice.',
+      'Mix well until fully combined.',
+      'Apply to dry hair, focusing on mid-lengths and ends.',
+      'Leave for 30 minutes then rinse with cool water — never hot, as it can cook the egg.',
+      'Shampoo and condition as normal.',
+    ],
+  },
+  {
+    id:          3,
+    title:       'Coconut Oil & Rosemary Growth Mask',
+    description: 'An intense conditioning treatment using coconut milk to restore elasticity and volume.',
+    image:       IMAGES.Coconut_Oil___Rosemary_Growth_Mask,
+    category:    'hair-mask',
+    tag:         'Trending',
+    difficulty:  'easy',
+    time:        '25 mins',
+    color:       '#e0f2fe',
+    benefits:    ['moisturizing', 'volume', 'anti-frizz'],
+    ingredients: [
+      { emoji: '🥥', name: 'Coconut Oil', benefit: 'Deeply hydrates and adds volume to limp hair' },
+      { emoji: '🍯', name: 'Honey',        benefit: 'Binds moisture to the hair shaft' },
+      { emoji: '🌿', name: 'Rosemary Oil', benefit: 'Stimulates circulation to encourage growth' },
+    ],
+    steps: [
+      'Shake the coconut oil can well then measure out 4 tbsp.',
+      'Whisk in 1 tbsp honey and 5 drops rosemary oil.',
+      'Section clean, damp hair and apply from root to tip.',
+      'Twist each section and clip up.',
+      'Leave for 25 minutes under a warm towel.',
+      'Rinse well and style as usual.',
+    ],
+  },
+  {
+    id:          4,
+    title:       'Banana & Honey Frizz Control Mask',
+    description: 'A smoothing mask that tames frizz and flyaways for sleek, manageable hair.',
+    image:       IMAGES.Banana___Honey_frizz,
+    category:    'hair-mask',
+    tag:         'New',
+    difficulty:  'easy',
+    time:        '20 mins',
+    color:       '#fef08a',
+    benefits:    ['anti-frizz', 'moisturizing', 'shine'],
+    ingredients: [
+      { emoji: '🍌', name: 'Banana',    benefit: 'High potassium content smooths the hair cuticle' },
+      { emoji: '🍯', name: 'Honey',     benefit: 'Natural emollient that seals the cuticle' },
+      { emoji: '🫒', name: 'Olive Oil', benefit: 'Adds weight and gloss to control frizz' },
+    ],
+    steps: [
+      'Blend one very ripe banana until completely smooth — lumps will get stuck in hair.',
+      'Stir in 2 tbsp honey and 1 tbsp olive oil.',
+      'Apply generously to damp hair.',
+      'Cover with cling film and leave for 20 minutes.',
+      'Rinse thoroughly then shampoo twice to remove all residue.',
+    ],
+  },
+  {
+    id:          5,
+    title:       'Castor Oil Scalp Growth Treatment',
+    description: 'A targeted scalp treatment to boost circulation and stimulate healthy hair growth.',
+    image:       IMAGES.Coconut_Oil___Rosemary_Growth_Mask,
+    category:    'hair-mask',
+    tag:         'Popular',
 
-export interface Ingredient {
-  name: string;
-  amount: string;
-  benefit: string;
-}
-
-export interface Recipe {
-  id: string;
-  title: string;
-  category: RecipeCategory;
-  description: string;
-  imageUrl: string;
-  prepTime: number;
-  ingredients: Ingredient[];
-  instructions: string[];
-  benefits: BenefitTag[];
-  difficulty: DifficultyLevel;
-  tips?: string;
-  summary?: string;
-}
-
-export interface FilterState {
-  category: RecipeCategory | 'all';
-  benefits: BenefitTag[];
-  difficulty: DifficultyLevel | 'all';
-  searchQuery: string;
-}
+    difficulty:  'easy',
+    time:        '45 mins',
+    color:       '#713f12',
+    benefits:    ['hair-growth', 'scalp-health'],
+    ingredients: [
+      { emoji: '🌱', name: 'Castor Oil',   benefit: 'Ricinoleic acid boosts scalp circulation for growth' },
+      { emoji: '🌿', name: 'Peppermint Oil', benefit: 'Invigorates the scalp and promotes blood flow' },
+      { emoji: '🫒', name: 'Coconut Oil',  benefit: 'Dilutes castor oil and adds nourishment' },
+    ],
+    steps: [
+      'Mix 2 tbsp castor oil with 1 tbsp coconut oil in a small bowl.',
+      'Add 3 drops of peppermint essential oil and stir.',
+      'Part hair into sections and apply directly to the scalp with fingertips.',
+      'Massage in circular motions for 5 minutes.',
+      'Cover with a shower cap and leave for at least 45 minutes or overnight.',
+      'Shampoo thoroughly — may need two washes to remove castor oil fully.',
+    ],
+  },
+  {
+    id:          6,
+    title:       'Rice Water Strengthening Rinse',
+    description: 'An ancient Korean and Japanese hair ritual using fermented rice water to strengthen and add shine.',
+    image:       IMAGES.rice_water_strengthening_rinse,
+    category:    'hair-mask',
+    tag:         'Viral',
+    difficulty:  'medium',
+    time:        '10 mins + 24hr ferment',
+    color:       '#f5f5f0',
+    benefits:    ['hair-growth', 'shine', 'scalp-health'],
+    ingredients: [
+      { emoji: '🍚', name: 'White Rice',    benefit: 'Inositol in rice water repairs damaged hair from within' },
+      { emoji: '💧', name: 'Filtered Water', benefit: 'Clean base for the fermentation process' },
+      { emoji: '🍋', name: 'Lemon Juice',   benefit: 'Balances pH of the rinse to prevent build-up' },
+    ],
+    steps: [
+      'Rinse ½ cup white rice to remove impurities.',
+      'Soak rice in 2 cups filtered water for 30 minutes, then strain the water into a jar.',
+      'Cover loosely and leave at room temperature for 24 hours to ferment.',
+      'Add a few drops of lemon juice before use.',
+      'After shampooing, pour rice water over hair and work through with fingers.',
+      'Leave for 5–10 minutes then rinse thoroughly with warm water.',
+    ],
+  },
+  {
+    id:          7,
+    title:       'Green Detox Glow Smoothie',
+    description: 'A nutrient-dense green smoothie to cleanse, energise and support glowing skin.',
+    image:       IMAGES.Green_Detox_Glow_smoothie,
+    category:    'smoothie',
+    tag:         'Popular',
+    difficulty:  'easy',
+    time:        '5 mins',
+    color:       '#4ade80',
+    benefits:    ['detox', 'glowing-skin', 'energy'],
+    ingredients: [
+      { emoji: '🥬', name: 'Spinach',       benefit: 'High in iron and vitamins A and C for skin repair' },
+      { emoji: '🍎', name: 'Green Apple',   benefit: 'Natural sweetness with gut-friendly fibre' },
+      { emoji: '🫚', name: 'Fresh Ginger',  benefit: 'Anti-inflammatory and supports digestion' },
+      { emoji: '🍋', name: 'Lemon',         benefit: 'Boosts vitamin C and brightens complexion' },
+    ],
+    steps: [
+      'Core and roughly chop one green apple — no need to peel.',
+      'Add apple, a large handful of spinach, a 1cm piece of fresh ginger and the juice of half a lemon to a blender.',
+      'Add 150ml cold water or coconut water.',
+      'Blend on high for 45 seconds until silky smooth.',
+      'Pour and drink immediately for maximum nutrients.',
+    ],
+  },
+  {
+    id:          8,
+    title:       'Coconut & Banana Energy Smoothie',
+    description: 'A creamy, energising smoothie packed with potassium and healthy fats.',
+    image:       IMAGES.Coconut___Banana,
+    category:    'smoothie',
+    tag:         'New',
+    difficulty:  'easy',
+    time:        '5 mins',
+    color:       '#fef9c3',
+    benefits:    ['hydration', 'energy', 'glowing-skin'],
+    ingredients: [
+      { emoji: '🍌', name: 'Banana',       benefit: 'High in potassium for energy and skin health' },
+      { emoji: '🥥', name: 'Coconut Milk', benefit: 'Rich in healthy fats that nourish skin from within' },
+      { emoji: '🍯', name: 'Honey',        benefit: 'Natural sweetener with antioxidant properties' },
+    ],
+    steps: [
+      'Peel and slice one ripe banana.',
+      'Add banana, 200ml coconut milk and 1 tsp honey to a blender.',
+      'Blend on high for 30 seconds until smooth and creamy.',
+      'Pour into a glass and serve immediately.',
+    ],
+  },
+  {
+    id:          9,
+    title:       'Berry Antioxidant Blast',
+    description: 'A vibrant berry smoothie loaded with antioxidants to fight ageing and boost skin radiance.',
+    image:       IMAGES.Berry_Antioxidant_Blast,
+    category:    'smoothie',
+    tag:         'Trending',
+    difficulty:  'easy',
+    time:        '5 mins',
+    color:       '#a855f7',
+    benefits:    ['anti-aging', 'glowing-skin', 'energy'],
+    ingredients: [
+      { emoji: '🫐', name: 'Blueberries',  benefit: 'Packed with anthocyanins that protect skin cells' },
+      { emoji: '🍓', name: 'Strawberries', benefit: 'High in vitamin C to boost collagen production' },
+      { emoji: '🍌', name: 'Banana',       benefit: 'Adds creaminess and natural sweetness' },
+      { emoji: '🥛', name: 'Almond Milk',  benefit: 'Light dairy-free base rich in vitamin E' },
+    ],
+    steps: [
+      'Measure out 80g blueberries and 80g strawberries — frozen work perfectly.',
+      'Add berries, one peeled banana and 200ml almond milk to a blender.',
+      'Blend for 30–40 seconds until completely smooth.',
+      'Taste and add a drizzle of honey if desired.',
+      'Pour and serve immediately.',
+    ],
+  },
+  {
+    id:          10,
+    title:       'Turmeric Golden Glow Smoothie',
+    description: 'An anti-inflammatory golden smoothie to reduce puffiness and give skin a healthy glow.',
+    image:       IMAGES.Turmeric_Golden_Glow_Smoothie,
+    category:    'smoothie',
+    tag:         'Popular',
+    difficulty:  'easy',
+    time:        '5 mins',
+    color:       '#f59e0b',
+    benefits:    ['anti-aging', 'glowing-skin', 'detox'],
+    ingredients: [
+      { emoji: '🌿', name: 'Turmeric',     benefit: 'Curcumin is a powerful anti-inflammatory for skin' },
+      { emoji: '🍍', name: 'Pineapple',    benefit: 'Bromelain enzyme reduces puffiness and inflammation' },
+      { emoji: '🥕', name: 'Carrot',       benefit: 'Beta-carotene converts to vitamin A for cell renewal' },
+      { emoji: '🫚', name: 'Black Pepper', benefit: 'Piperine increases curcumin absorption by 2000%' },
+    ],
+    steps: [
+      'Peel and roughly chop one medium carrot.',
+      'Add carrot, 100g fresh pineapple chunks, ½ tsp turmeric powder and a pinch of black pepper to a blender.',
+      'Add 200ml coconut water.',
+      'Blend on high for 45 seconds.',
+      'Strain through a fine sieve if a smoother texture is preferred.',
+      'Drink immediately.',
+    ],
+  },
+  {
+    id:          11,
+    title:       'Mango Collagen Booster Smoothie',
+    description: 'A tropical smoothie rich in vitamin C to naturally stimulate collagen and plump skin.',
+    image:       IMAGES.Mango_Collagen_powder_smoothie,
+    category:    'smoothie',
+    tag:         'New',
+    difficulty:  'easy',
+    time:        '5 mins',
+    color:       '#fb923c',
+    benefits:    ['anti-aging', 'glowing-skin', 'hydration'],
+    ingredients: [
+      { emoji: '🥭', name: 'Mango',         benefit: 'Extremely high in vitamin C for collagen synthesis' },
+      { emoji: '🍊', name: 'Orange Juice',  benefit: 'Boosts vitamin C content and natural sweetness' },
+      { emoji: '🌿', name: 'Collagen Powder', benefit: 'Directly supports skin elasticity and firmness' },
+    ],
+    steps: [
+      'Peel and cube one ripe mango or use 150g frozen mango.',
+      'Add mango, 150ml fresh orange juice and one scoop of collagen powder to a blender.',
+      'Blend for 30 seconds until completely smooth.',
+      'Pour over ice and serve immediately.',
+    ],
+  },
+  {
+    id:          12,
+    title:       'Cucumber Mint Detox Water',
+    description: 'A refreshing infused water to hydrate and gently cleanse throughout the day.',
+    image:       IMAGES.Cucumber_Mint_DetoxWater,
+    category:    'detox-water',
+    tag:         'Trending',
+    difficulty:  'easy',
+    time:        '10 mins + 1hr chill',
+    color:       '#d1fae5',
+    benefits:    ['detox', 'hydration'],
+    ingredients: [
+      { emoji: '🥒', name: 'Cucumber',   benefit: 'High water content helps flush toxins from the body' },
+      { emoji: '🌿', name: 'Fresh Mint', benefit: 'Aids digestion and adds natural freshness' },
+      { emoji: '🍋', name: 'Lemon',      benefit: 'Rich in vitamin C and supports liver detoxification' },
+    ],
+    steps: [
+      'Slice half a cucumber and one lemon into thin rounds.',
+      'Add cucumber, lemon and a handful of fresh mint to a large jug.',
+      'Fill with 1 litre of cold filtered water.',
+      'Refrigerate for at least 1 hour before serving.',
+      'Serve over ice and top up with water throughout the day.',
+    ],
+  },
+  {
+    id:          13,
+    title:       'Strawberry & Basil Glow Water',
+    description: 'A delicate floral infusion with antioxidant-rich berries for glowing skin from within.',
+    image:       IMAGES.Strawberry_Basil_Glow_Water,
+    category:    'detox-water',
+    tag:         'Popular',
+    difficulty:  'easy',
+    time:        '10 mins + 2hr chill',
+    color:       '#fce7f3',
+    benefits:    ['glowing-skin', 'hydration', 'anti-aging'],
+    ingredients: [
+      { emoji: '🍓', name: 'Strawberries', benefit: 'Loaded with vitamin C to brighten skin tone' },
+      { emoji: '🌹', name: 'Rose Petals',  benefit: 'Natural anti-inflammatory with a mood-lifting scent' },
+      { emoji: '🌿', name: 'Basil',  benefit: 'Powerful antioxidants that protect skin cells from damage' },
+    ],
+    steps: [
+      'Halve 6 fresh strawberries and rinse a small handful of dried food-grade rose petals.',
+      'Add strawberries, rose petals and a handful of blueberries to a large jug.',
+      'Fill with 1 litre of cold still or sparkling water.',
+      'Chill in the fridge for at least 2 hours.',
+      'Serve in tall glasses with ice.',
+    ],
+  },
+  {
+    id:          14,
+    title:       'Lemon & Ginger Detox Water',
+    description: 'A zesty, warming detox water to kick-start digestion and boost metabolism each morning.',
+    image:       IMAGES.Lemon___Ginger_Detox_water,
+    category:    'detox-water',
+    tag:         'Best Seller',
+    difficulty:  'easy',
+    time:        '5 mins',
+    color:       '#fef08a',
+    benefits:    ['detox', 'energy', 'glowing-skin'],
+    ingredients: [
+      { emoji: '🍋', name: 'Lemon',       benefit: 'Alkalises the body and supports liver detox pathways' },
+      { emoji: '🫚', name: 'Fresh Ginger', benefit: 'Boosts metabolism and soothes the digestive system' },
+      { emoji: '🍯', name: 'Raw Honey',   benefit: 'Antibacterial properties with a touch of natural sweetness' },
+    ],
+    steps: [
+      'Slice half a lemon into rounds and peel a 2cm piece of fresh ginger.',
+      'Add lemon and ginger to a large glass or jug.',
+      'Pour over 500ml warm (not boiling) water.',
+      'Stir in 1 tsp raw honey until dissolved.',
+      'Drink warm first thing in the morning on an empty stomach.',
+    ],
+  },
+  {
+    id:          15,
+    title:       'Watermelon & Basil Hydration Water',
+    description: 'A summery, hydrating infusion to replenish electrolytes and cool the skin.',
+    image:       IMAGES.Watermelon_Basil_water,
+    category:    'detox-water',
+    tag:         'New',
+    difficulty:  'easy',
+    time:        '10 mins + 1hr chill',
+    color:       '#f87171',
+    benefits:    ['hydration', 'glowing-skin', 'detox'],
+    ingredients: [
+      { emoji: '🍉', name: 'Watermelon', benefit: '92% water content for superior hydration and lycopene' },
+      { emoji: '🌿', name: 'Fresh Basil', benefit: 'Anti-inflammatory and adds a subtle peppery note' },
+      { emoji: '🍋', name: 'Lime',        benefit: 'Adds vitamin C and a bright citrus balance' },
+    ],
+    steps: [
+      'Cut 200g watermelon into small cubes, removing seeds.',
+      'Add watermelon, a handful of fresh basil leaves and 3 lime slices to a jug.',
+      'Lightly muddle the watermelon with a spoon to release the juices.',
+      'Fill with 1 litre cold water.',
+      'Chill for at least 1 hour and serve over ice.',
+    ],
+  },
+  {
+    id:          16,
+    title:       'Apple Cinnamon Detox Water',
+    description: 'A daily detox tonic using apple cider vinegar to balance pH and support clear skin.',
+    image:       IMAGES.Apple_Cinnamon_Detox_Water,
+    category:    'detox-water',
+    tag:         'Viral',
+    difficulty:  'easy',
+    time:        '5 mins',
+    color:       '#fbbf24',
+    benefits:    ['detox', 'glowing-skin', 'anti-aging'],
+    ingredients: [
+      { emoji: '🍎', name: 'Apple ', benefit: 'Acetic acid balances gut pH and supports skin clarity' },
+      { emoji: '🫚', name: 'Cinnamon Stick',            benefit: 'Spicy warmth that enhances detox and supports circulation' },
+      { emoji: '🍯', name: 'Raw Honey',            benefit: 'Soothes the throat and softens the sharp vinegar taste' },
+      { emoji: '🍋', name: 'Lemon Juice',          benefit: 'Adds vitamin C and enhances the detoxifying effect' },
+      
+    ],
+    steps: [
+      'Add 1–2 tbsp raw apple cider vinegar to a large glass.',
+      'Squeeze in the juice of half a lemon.',
+      'Stir in 1 tsp raw honey.',
+      'Top up with 250ml cold water and stir well.',
+      'Drink once daily — always use a straw to protect tooth enamel.',
+    ],
+  },
+  {
+    id:          17,
+    title:       'Hibiscus & Berry Detox Water',
+    description: 'A beautiful deep-red infusion using hibiscus flowers and berries to support circulation.',
+    image:       IMAGES.Hisbiscus_Berrys_water,
+    category:    'detox-water',
+    tag:         'Trending',
+    difficulty:  'medium',
+    time:        '15 mins + 2hr chill',
+    color:       '#be185d',
+    benefits:    ['anti-aging', 'glowing-skin', 'detox'],
+    ingredients: [
+      { emoji: '🌺', name: 'Dried Hibiscus', benefit: 'Rich in anthocyanins that support circulation and skin tone' },
+      { emoji: '🫐', name: 'Blueberries',    benefit: 'Antioxidants that neutralise free radicals' },
+      { emoji: '🍓', name: 'Raspberries',    benefit: 'Ellagic acid helps protect skin from UV damage' },
+    ],
+    steps: [
+      'Steep 2 tbsp dried hibiscus flowers in 500ml hot water for 10 minutes.',
+      'Strain and allow to cool completely.',
+      'Add blueberries and raspberries to a jug.',
+      'Pour cooled hibiscus tea over the berries.',
+      'Top up with 500ml cold water and refrigerate for 2 hours.',
+      'Serve over ice.',
+    ],
+  },
+  {
+    id:          18,
+    title:       'Rosemary Lemon Detox Water',
+    description: 'A striking black detox water using activated charcoal to bind and eliminate toxins.',
+    image:       IMAGES.Rosemary__Lemon_Detox_Water,
+    category:    'detox-water',
+    tag:         'Advanced',
+    difficulty:  'advanced',
+    time:        '5 mins',
+    color:       '#1c1917',
+    benefits:    ['detox', 'glowing-skin'],
+    ingredients: [
+      { emoji: '🌿', name: 'Rosemary', benefit: 'Binds to toxins in the digestive tract and removes them' },
+      { emoji: '🍋', name: 'Lemon',              benefit: 'Alkalising effect complements charcoal detox' },
+      { emoji: '💧', name: 'Filtered Water',     benefit: 'Clean base — essential with activated charcoal' },
+    ],
+    steps: [
+      'Add ½ tsp food-grade activated charcoal to a large glass.',
+      'Squeeze in the juice of one lemon.',
+      'Fill with 500ml filtered water and stir well until charcoal is dispersed.',
+      'Drink immediately — charcoal settles quickly.',
+      'Note: do not take within 2 hours of medications as charcoal may reduce absorption.',
+    ],
+  },
+  {
+    id:          19,
+    title:       'Aloe Vera & Coconut Hydration Water',
+    description: 'A deeply hydrating infusion using aloe vera and coconut water to plump and soothe skin.',
+    image:       IMAGES.Aloe_Vera___Coconut_Water,
+    category:    'detox-water',
+    tag:         'Popular',
+    difficulty:  'easy',
+    time:        '5 mins',
+    color:       '#86efac',
+    benefits:    ['hydration', 'glowing-skin', 'anti-aging'],
+    ingredients: [
+      { emoji: '🌵', name: 'Aloe Vera Gel',  benefit: 'Deeply hydrates skin cells and soothes inflammation' },
+      { emoji: '🥥', name: 'Coconut Water',  benefit: 'Natural electrolytes for superior cellular hydration' },
+      { emoji: '🍋', name: 'Lime Juice',     benefit: 'Vitamin C boosts collagen and brightens skin tone' },
+    ],
+    steps: [
+      'Add 2 tbsp pure food-grade aloe vera gel to a large glass.',
+      'Pour over 300ml coconut water.',
+      'Squeeze in the juice of half a lime.',
+      'Stir well until aloe gel is fully dissolved.',
+      'Drink immediately or refrigerate for up to 24 hours.',
+    ],
+  },
+];

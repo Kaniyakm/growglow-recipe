@@ -1,7 +1,8 @@
-import { useState }  from 'react';
-import { Clock }     from 'lucide-react';
-import { Recipe }    from '../types/recipe';
-import { Badge }     from './ui/badge';
+import { useState }       from 'react';
+import { useNavigate }    from 'react-router';
+import { Clock }          from 'lucide-react';
+import { Recipe }         from '../types/recipe';
+import { Badge }          from './ui/badge';
 
 const CATEGORY_LABEL: Record<string, string> = {
   'hair-mask':   'Hair Mask',
@@ -23,6 +24,7 @@ interface Props {
 
 export function RecipeCard({ recipe, index, onClick }: Props) {
   const [flipped, setFlipped] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div
@@ -87,7 +89,6 @@ export function RecipeCard({ recipe, index, onClick }: Props) {
               ))}
             </div>
 
-            {/* ✅ Clock now used here */}
             <div className="flex items-center justify-between text-sm text-gray-500 border-t pt-3 mt-auto">
               <div className="flex items-center gap-1">
                 <Clock className="size-4" />
@@ -142,8 +143,9 @@ export function RecipeCard({ recipe, index, onClick }: Props) {
           </div>
 
           <div className="bg-gray-50 border-t px-5 py-3 flex-shrink-0">
+            {/* ✅ FIXED: navigates to the full recipe page instead of opening modal */}
             <button
-              onClick={() => onClick(recipe)}
+              onClick={() => navigate(`/recipes/${recipe.id}`)}
               className="w-full bg-emerald-600 hover:bg-emerald-700 text-white
                          text-sm font-semibold py-2.5 rounded-lg transition-colors"
             >

@@ -1,2 +1,0 @@
-import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
-export const SearchBar = ({ value, onChange }) => (_jsxs("div", { className: "search-wrap", children: [_jsx("span", { className: "search-icon", children: "\uD83D\uDD0D" }), _jsx("input", { className: "search-input", placeholder: "Search by name, benefit, or ingredient\u2026", value: value, onChange: (e) => onChange(e.target.value) })] }));

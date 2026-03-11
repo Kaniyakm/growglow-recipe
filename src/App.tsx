@@ -1,22 +1,21 @@
 import { useState, useEffect }              from 'react';
+import { Routes, Route }                    from 'react-router';
 import { Recipe, FilterKey, RecipeCategory } from './types/recipe';
 import { recipes }                           from './data/recipes';
 import { useRecipes }                        from './hooks/useRecipes';
 import { RecipeSection }                     from './components/RecipeSection';
 import { FilterPills }                       from './components/FilterPills';
 import { RecipeModal }                       from './components/RecipeModal';
+import { RecipeDetail }                      from './components/RecipeDetail';
 import { SearchBar }                         from './components/SearchBar';
-
-
-
 
 const CATEGORIES: RecipeCategory[] = ['hair-mask', 'smoothie', 'detox-water'];
 
-export default function App() {
-  const [filter, setFilter] = useState<FilterKey>('all');
-  const [search, setSearch] = useState('');
+function RecipesPage() {
+  const [filter, setFilter]     = useState<FilterKey>('all');
+  const [search, setSearch]     = useState('');
   const [selected, setSelected] = useState<Recipe | null>(null);
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted]   = useState(false);
 
   useEffect(() => { setMounted(true); }, []);
 
@@ -67,5 +66,14 @@ export default function App() {
 
       <RecipeModal recipe={selected} onClose={() => setSelected(null)} />
     </>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/"            element={<RecipesPage />} />
+      <Route path="/recipes/:id" element={<RecipeDetail />} />
+    </Routes>
   );
 }

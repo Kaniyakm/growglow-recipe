@@ -88,47 +88,16 @@ src/
 
 ---
 
-## 🚀 Getting Started
 
-### Prerequisites
-- Node.js 18+
-- npm or pnpm
 
-### Installation
-
-```bash
-# Clone the repository
-git clone https://github.com/YOUR_USERNAME/recipe-growglow.git
-
-# Navigate to project folder
-cd recipe-growglow
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-```
 
 Open [groglow.netlify.app]
 (http:/https://groglow.netlify.app/) in your browser.
 
----
 
-## 📦 Build & Deploy
 
-```bash
-# Build for production
-npm run build
 
-# Preview production build locally
-npm run preview
 
-# Deploy to GitHub Pages
-npm run deploy
-```
-
----
 
 ## 🎨 Design
 

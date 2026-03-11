@@ -1,5 +1,4 @@
 # 🌿 GroGlow — Wellness Recipe App
-
 > Natural wellness recipes for hair growth and glowing skin  
 > Built with TypeScript + React + Tailwind CSS
 
@@ -9,7 +8,7 @@
 
 ## 🔗 Live Demo
 
-[View Live on GitHub Pages](https://YOUR_USERNAME.github.io/recipe-growglow/)
+[View Live on Netlify](https://groglow.netlify.app/)
 
 ---
 
@@ -25,6 +24,7 @@ GroGlow is a wellness recipe application featuring 19 natural recipes across thr
 - **Flip Card Interaction** — click any card to reveal ingredients with a 3D flip animation
 - **Smart Filtering** — filter by category, benefits, difficulty and search
 - **Recipe Detail Pages** — full ingredient lists, step-by-step instructions and related recipes
+- **Recipe Modal** — quick-view overlay with tap-to-track step progress
 - **Responsive Design** — works on mobile, tablet and desktop
 - **Base64 Images** — all images embedded for fast offline loading
 - **TypeScript** — fully typed data models and components
@@ -49,7 +49,7 @@ GroGlow is a wellness recipe application featuring 19 natural recipes across thr
 | TypeScript | Type safety |
 | Tailwind CSS v4 | Styling |
 | Vite | Build tool |
-| React Router | Client-side routing |
+| React Router v7 | Client-side routing |
 | Lucide React | Icons |
 | shadcn/ui | UI components (Badge, Button, Input) |
 
@@ -63,7 +63,7 @@ src/
     ui/               # shadcn/ui components (Badge, Button, Input etc.)
     RecipeCard.tsx    # Flip card with 3D animation
     RecipeDetail.tsx  # Full recipe detail page
-    RecipeModal.tsx   # Recipe modal overlay
+    RecipeModal.tsx   # Recipe modal overlay with step tracker
     RecipeSection.tsx # Category section with card grid
     FilterPills.tsx   # Category filter buttons
     SearchBar.tsx     # Search input
@@ -82,22 +82,29 @@ src/
     fonts.css         # Font imports
   types/
     recipe.ts         # TypeScript interfaces and types
-  App.tsx             # Recipes grid page
-  main.tsx            # Entry point + routing
+  App.tsx             # Route definitions + recipes grid page
+  main.tsx            # Entry point + BrowserRouter
 ```
 
 ---
 
+## 🚀 Getting Started
 
+```bash
+# Clone the repo
+git clone https://github.com/Kaniyakm/growglow-recipe.git
+cd growglow-recipe
 
+# Install dependencies
+npm install
 
-Open [groglow.netlify.app]
-(http:/https://groglow.netlify.app/) in your browser.
+# Start dev server
+npm run dev
+```
 
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-
-
-
+---
 
 ## 🎨 Design
 
